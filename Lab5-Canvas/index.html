@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Chart Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="controls-panel">
+            <h1>Dynamic Canvas Chart</h1>
+            
+            <div class="control-group">
+                <button id="toggleBtn" class="btn primary">Pause</button>
+                <button id="resetBtn" class="btn danger">Reset Data</button>
+                <button id="themeBtn" class="btn secondary">Toggle Theme</button>
+                <button id="exportBtn" class="btn success">Export PNG</button>
+            </div>
+
+            <div class="control-group">
+                <label>Chart Type:</label>
+                <select id="chartType">
+                    <option value="line">Line Chart</option>
+                    <option value="area">Area Chart</option>
+                    <option value="bar">Bar Chart</option>
+                    <option value="scatter">Scatter Plot</option>
+                </select>
+                
+                <label>Speed (ms):</label>
+                <input type="range" id="speedRange" min="100" max="2000" step="100" value="1000">
+                <span id="speedValue">1000ms</span>
+
+                <label>
+                    <input type="checkbox" id="gridToggle" checked> Show Grid
+                </label>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="chartCanvas" width="900" height="600"></canvas>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-box" style="border-left: 5px solid #00ff00;">
+                <h3>Series A (Green)</h3>
+                <p>Current: <span id="valA">0</span></p>
+                <p>Avg: <span id="avgA">0</span></p>
+                <p>Max: <span id="maxA">0</span></p>
+            </div>
+            <div class="stat-box" style="border-left: 5px solid #00ccff;">
+                <h3>Series B (Blue)</h3>
+                <p>Current: <span id="valB">0</span></p>
+                <p>Avg: <span id="avgB">0</span></p>
+                <p>Max: <span id="maxB">0</span></p>
+            </div>
+            <div class="stat-box" style="border-left: 5px solid #ff3300;">
+                <h3>Series C (Red)</h3>
+                <p>Current: <span id="valC">0</span></p>
+                <p>Avg: <span id="avgC">0</span></p>
+                <p>Max: <span id="maxC">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 let allAlbums = []; 
 
-// 1. Fetch Data
 document.addEventListener("DOMContentLoaded", () => {
     fetch('library.json')
         .then(response => response.json())
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error('Error loading library:', error));
 
-    // Activare Search (Exercise 6)
     document.getElementById('searchInput').addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filtered = allAlbums.filter(album => 
@@ -21,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 2. Render Albums in Grid
+
 function renderAlbums(albums) {
     const grid = document.getElementById("album-grid");
     grid.innerHTML = ""; 
@@ -35,8 +33,7 @@ function renderAlbums(albums) {
         const col = document.createElement("div");
         col.className = "col-xl-2 col-md-3 col-sm-6 col-12";
 
-        // Nota: Presupunem ca imaginile sunt in folderul assets/img/
-        // Daca nu ai imaginile, browserul va arata iconita de 'broken image'
+        
         const imagePath = `assets/img/${album.thumbnail}`;
 
         col.innerHTML = `
@@ -57,15 +54,15 @@ function renderAlbums(albums) {
     });
 }
 
-// 3. Open Modal & Calculate Stats
+
 function openModal(albumId) {
     const album = allAlbums.find(a => a.id === albumId);
     if (!album) return;
 
-    // A. Set Title (Exercise 4)
+    
     document.getElementById('modalTitle').textContent = `${album.artist} - ${album.album}`;
 
-    // B. Calculate Statistics (Exercise 9)
+    
     let totalSeconds = 0;
     let minTrack = album.tracklist[0];
     let maxTrack = album.tracklist[0];
@@ -80,7 +77,7 @@ function openModal(albumId) {
 
     const avgSeconds = totalSeconds / album.tracklist.length;
 
-    // C. Build Modal Body
+  
     const modalBody = document.getElementById('modalBody');
     modalBody.innerHTML = `
         <div class="alert alert-light border mb-3">
@@ -126,7 +123,7 @@ function openModal(albumId) {
         </div>
     `;
 
-    // D. Play Button Logic (Exercise 5) - Opens first track
+    
     const playBtn = document.getElementById('modalPlayBtn');
     if (album.tracklist.length > 0) {
         playBtn.href = album.tracklist[0].url;
@@ -139,13 +136,12 @@ function openModal(albumId) {
     myModal.show();
 }
 
-// Helper: "4:35" -> 275 seconds
 function parseTime(timeStr) {
     const parts = timeStr.split(':');
     return parseInt(parts[0]) * 60 + parseInt(parts[1]);
 }
 
-// Helper: 275 seconds -> "4:35" (or "1h 4m" if long)
+
 function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = Math.floor(totalSeconds % 60);
