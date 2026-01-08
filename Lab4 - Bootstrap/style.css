@@ -1,0 +1,25 @@
+/* Asigură înălțime egală la carduri */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+/* Hover Effect (Exercise 7) */
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+/* Aspect ratio fix pentru imagini */
+.card-img-top {
+    height: 200px; /* Sau cat vrei tu */
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Link-uri in modal */
+a.text-dark:hover {
+    color: #1DB954 !important; /* Spotify Green */
+    text-decoration: underline !important;
+}
